@@ -1,6 +1,6 @@
 import { Information } from './Information.jsx'
+import { Education } from './Education.jsx'
 import { Experience } from './Experience.jsx'
-import { Practical } from './Practical.jsx'
 import './App.css'
 
 function App() {
@@ -8,8 +8,8 @@ function App() {
     <>
       <div className="App">
         <Information />
+        <Education />
         <Experience />
-        <Practical />
       </div>
     </>
   )
