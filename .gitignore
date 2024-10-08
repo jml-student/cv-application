@@ -8,6 +8,8 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+!node_modules/react/
+!node_modules/react-dom/
 dist
 dist-ssr
 *.local
