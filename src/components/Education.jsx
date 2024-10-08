@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function Education() {
+function Education() {
   const [education, setEducation] = useState([
     { school: '', title: '', date: '' },
   ])
@@ -8,50 +8,44 @@ export default function Education() {
     <div className="education">
       <h1>Education</h1>
       <div className="education-form">
-        {education.forEach((item) => {
+        {education.map((item, index) => {
           return (
-            <div className="education-item">
-              <label htmlFor="school">School</label>
+            <div key={index} className="education-item">
+              <label htmlFor={`school-${index}`}>School</label>
               <input
                 type="text"
-                id="school"
+                id={`school-${index}`}
                 value={item.school}
                 onChange={(e) =>
                   setEducation(
-                    education.map((item) =>
-                      item.school === e.target.value
-                        ? { ...item, school: e.target.value }
-                        : item
+                    education.map((item, i) =>
+                      i === index ? { ...item, school: e.target.value } : item
                     )
                   )
                 }
               />
-              <label htmlFor="title">Title</label>
+              <label htmlFor={`title-${index}`}>Title</label>
               <input
                 type="text"
-                id="title"
+                id={`title-${index}`}
                 value={item.title}
                 onChange={(e) =>
                   setEducation(
-                    education.map((item) =>
-                      item.title === e.target.value
-                        ? { ...item, title: e.target.value }
-                        : item
+                    education.map((item, i) =>
+                      i === index ? { ...item, title: e.target.value } : item
                     )
                   )
                 }
               />
-              <label htmlFor="date">Date</label>
+              <label htmlFor={`date-${index}`}>Date</label>
               <input
                 type="date"
-                id="date"
+                id={`date-${index}`}
                 value={item.date}
                 onChange={(e) =>
                   setEducation(
-                    education.map((item) =>
-                      item.date === e.target.value
-                        ? { ...item, date: e.target.value }
-                        : item
+                    education.map((item, i) =>
+                      i === index ? { ...item, date: e.target.value } : item
                     )
                   )
                 }
@@ -62,13 +56,14 @@ export default function Education() {
       </div>
       <button
         className="btn-add-education"
-        onClick={setEducation([
-          ...education,
-          { school: '', title: '', date: '' },
-        ])}
+        onClick={() =>
+          setEducation([...education, { school: '', title: '', date: '' }])
+        }
       >
         +
       </button>
     </div>
   )
 }
+
+export default Education

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function Experience() {
+function Experience() {
   const [experience, setExperience] = useState([
     { company: '', title: '', responsability: '', from: '', to: '' },
   ])
@@ -8,80 +8,72 @@ export default function Experience() {
     <div className="experience">
       <h1>Experience</h1>
       <div className="experience-form">
-        {experience.forEach((item) => {
+        {experience.map((item, index) => {
           return (
-            <div className="experience-item">
-              <label htmlFor="company">Company</label>
+            <div key={index} className="experience-item">
+              <label htmlFor={`company-${index}`}>Company</label>
               <input
                 type="text"
-                id="company"
+                id={`company-${index}`}
                 value={item.company}
                 onChange={(e) =>
                   setExperience(
-                    experience.map((item) =>
-                      item.company === e.target.value
-                        ? { ...item, company: e.target.value }
-                        : item
+                    experience.map((item, i) =>
+                      i === index ? { ...item, company: e.target.value } : item
                     )
                   )
                 }
               />
-              <label htmlFor="job-title">Job Title</label>
+              <label htmlFor={`job-title-${index}`}>Job Title</label>
               <input
                 type="text"
-                id="job-title"
+                id={`job-title-${index}`}
                 value={item.title}
                 onChange={(e) =>
                   setExperience(
-                    experience.map((item) =>
-                      item.title === e.target.value
-                        ? { ...item, title: e.target.value }
-                        : item
+                    experience.map((item, i) =>
+                      i === index ? { ...item, title: e.target.value } : item
                     )
                   )
                 }
               />
-              <label htmlFor="responsability">Responsability</label>
+              <label htmlFor={`responsability-${index}`}>Responsability</label>
               <input
                 type="text"
-                id="responsability"
+                id={`responsability-${index}`}
                 value={item.responsability}
                 onChange={(e) =>
                   setExperience(
-                    experience.map((item) =>
-                      item.responsability === e.target.value
+                    experience.map((item, i) =>
+                      i === index
                         ? { ...item, responsability: e.target.value }
                         : item
                     )
                   )
                 }
               />
-              <label htmlFor="from">From</label>
+              <label htmlFor={`from-${index}`}>From</label>
               <input
                 type="date"
-                id="from"
+                id={`from-${index}`}
                 value={item.from}
                 onChange={(e) =>
                   setExperience(
-                    experience.map((item) =>
-                      item.from === e.target.value
-                        ? { ...item, from: e.target.value }
-                        : item
+                    experience.map((item, i) =>
+                      i === index ? { ...item, from: e.target.value } : item
                     )
                   )
                 }
               />
-              <label htmlFor="to">To</label>
+              <label htmlFor={`from-${index}`}>To</label>
               <input
                 type="date"
-                id="to"
+                id={`from-${index}`}
                 value={item.to}
                 onChange={(e) =>
                   setExperience(
-                    experience.map((item) =>
-                      item.to === e.target.value
-                        ? { ...item, to: e.target.value }
-                        : item
+                    experience.map((item, i) =>
+                      i === index ? { ...item, to: e.target.value } : item
                     )
                   )
                 }
@@ -92,13 +84,17 @@ export default function Experience() {
       </div>
       <button
         className="btn-add-experience"
-        onClick={setExperience([
-          ...experience,
-          { company: '', title: '', responsability: '', from: '', to: '' },
-        ])}
+        onClick={() =>
+          setExperience([
+            ...experience,
+            { company: '', title: '', responsability: '', from: '', to: '' },
+          ])
+        }
       >
         +
       </button>
     </div>
   )
 }
+
+export default Experience

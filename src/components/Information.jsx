@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function Information() {
+function Information() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
@@ -37,3 +37,5 @@ export default function Information() {
     </div>
   )
 }
+
+export default Information
