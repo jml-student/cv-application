@@ -34,10 +34,11 @@ body {
 
 .header {
   padding: 10px 20px;
-  background: linear-gradient(to right, #d6d6d6, #ebebeb);
+  background: linear-gradient(to right, #007bff, #6bb2ff);
 
   & h1 {
     font-size: 1.6em;
+    color: #fff;
   }
 }
 
