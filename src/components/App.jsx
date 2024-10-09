@@ -10,6 +10,9 @@ function App() {
         <Education />
         <Experience />
       </div>
+      <button type="submit" className="btn-submit">
+        Submit
+      </button>
     </>
   )
 }
