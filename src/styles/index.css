@@ -59,6 +59,7 @@ h2 {
   padding-top: 10px;
   gap: 10px;
   padding-bottom: 20px;
+  border-bottom: 2px solid #007bff;
 }
 
 .information-form,
@@ -99,6 +100,21 @@ h2 {
     margin-bottom: 15px;
     min-width: 90%;
     max-width: 50%;
+    transition:
+      background-color 0.5s ease,
+      border-color 0.5s ease,
+      box-shadow 0.5s ease;
+    outline: none;
+
+    &:hover,
+    &:focus {
+      background-color: #f5faff;
+      box-shadow:
+        inset 0 -0.0625em 0.0625em 0.125em rgba(0, 153, 255, 0.1),
+        inset 0 -0.125em 0.0625em rgba(0, 114, 207, 0.2),
+        inset 0 0.1875em 0.0625em rgba(201, 229, 255, 0.3),
+        0 0.125em 0.125em rgba(0, 0, 0, 0.4);
+    }
   }
 }
 
@@ -116,42 +132,38 @@ h2 {
   height: 40px;
   padding: 7px;
   border: 0;
-  background-color: #e8e8e8;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
   box-shadow:
     inset 0 -0.0625em 0.0625em 0.125em rgb(0 0 0 / 0.1),
     inset 0 -0.125em 0.0625em rgb(0 0 0 / 0.2),
     inset 0 0.1875em 0.0625em rgb(255 255 255 / 0.3),
     0 0.125em 0.125em rgb(0 0 0 / 0.5);
-}
-
-/*.btn-education,
-.btn-experience {
-  padding: 10px 20px;
-  max-width: 150px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.2em;
-  cursor: pointer;
-  background-color: #007bff;
-  color: #fff;
   transition: background-color 0.3s ease;
 
   &:hover {
     background-color: #0069d9;
   }
-}*/
+}
 
 .btn-submit {
   padding: 10px 20px;
   margin-left: 20px;
+  margin-bottom: 20px;
   max-width: 150px;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 1.2em;
   cursor: pointer;
   background-color: #007bff;
   color: #fff;
   transition: background-color 0.3s ease;
+  box-shadow:
+    inset 0 -0.0625em 0.0625em 0.125em rgb(0 0 0 / 0.1),
+    inset 0 -0.125em 0.0625em rgb(0 0 0 / 0.2),
+    inset 0 0.1875em 0.0625em rgb(255 255 255 / 0.3),
+    0 0.125em 0.125em rgb(0 0 0 / 0.5);
 
   &:hover {
     background-color: #0069d9;
