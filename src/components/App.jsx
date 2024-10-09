@@ -1,18 +1,17 @@
 import Information from './Information.jsx'
 import Education from './Education.jsx'
 import Experience from './Experience.jsx'
+import Submit from './Submit.jsx'
 
 function App() {
   return (
     <>
-      <div className="App">
+      <div className='App'>
         <Information />
         <Education />
         <Experience />
+        <Submit />
       </div>
-      <button type="submit" className="btn-submit">
-        Submit
-      </button>
     </>
   )
 }

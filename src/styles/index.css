@@ -78,6 +78,7 @@ h2 {
 .experience-item {
   border-bottom: 1px solid #b4b4b4;
   padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .information-field,
@@ -150,9 +151,22 @@ h2 {
   }
 }
 
+.trash-container {
+  display: flex;
+  align-items: center;
+}
+
+.btn-education-trash,
+.btn-experience-trash {
+  color: #181818;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
 .btn-submit {
   padding: 10px 20px;
-  margin-left: 20px;
+  margin-top: 20px;
   margin-bottom: 20px;
   max-width: 150px;
   border: none;
