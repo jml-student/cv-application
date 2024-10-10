@@ -4,6 +4,20 @@ function Experience() {
   const [experience, setExperience] = useState([
     { company: '', title: '', responsability: '', from: '', to: '' },
   ])
+
+  const handleAddExperience = (e) => {
+    e.preventDefault()
+    setExperience([
+      ...experience,
+      { company: '', title: '', responsability: '', from: '', to: '' },
+    ])
+  }
+
+  const handleDeleteExperience = (e, index) => {
+    e.preventDefault()
+    setExperience(experience.filter((_, i) => i !== index))
+  }
+
   return (
     <div className='experience'>
       <h2>Experience</h2>
@@ -99,7 +113,10 @@ function Experience() {
               </div>
               {index !== 0 && (
                 <div className='trash-container'>
-                  <button className='btn-education-trash'>
+                  <button
+                    className='btn-education-trash'
+                    onClick={(e) => handleDeleteExperience(e, index)}
+                  >
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       fill='currentColor'
@@ -115,15 +132,7 @@ function Experience() {
         })}
       </div>
       <div className='experience-buttons'>
-        <button
-          className='btn-experience-add'
-          onClick={() =>
-            setExperience([
-              ...experience,
-              { company: '', title: '', responsability: '', from: '', to: '' },
-            ])
-          }
-        >
+        <button className='btn-experience-add' onClick={handleAddExperience}>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             fill='currentColor'
