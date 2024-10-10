@@ -16,6 +16,7 @@ function Experience() {
                 <input
                   type='text'
                   id={`company-${index}`}
+                  name='company'
                   value={item.company}
                   onChange={(e) =>
                     setExperience(
@@ -33,6 +34,7 @@ function Experience() {
                 <input
                   type='text'
                   id={`job-title-${index}`}
+                  name='job-title'
                   value={item.title}
                   onChange={(e) =>
                     setExperience(
@@ -50,6 +52,7 @@ function Experience() {
                 <input
                   type='text'
                   id={`responsability-${index}`}
+                  name='responsability'
                   value={item.responsability}
                   onChange={(e) =>
                     setExperience(
@@ -67,6 +70,7 @@ function Experience() {
                 <input
                   type='date'
                   id={`from-${index}`}
+                  name='from'
                   value={item.from}
                   onChange={(e) =>
                     setExperience(
@@ -82,6 +86,7 @@ function Experience() {
                 <input
                   type='date'
                   id={`from-${index}`}
+                  name='to'
                   value={item.to}
                   onChange={(e) =>
                     setExperience(

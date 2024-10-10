@@ -16,6 +16,7 @@ function Education() {
                 <input
                   type='text'
                   id={`school-${index}`}
+                  name='school'
                   value={item.school}
                   onChange={(e) =>
                     setEducation(
@@ -31,6 +32,7 @@ function Education() {
                 <input
                   type='text'
                   id={`title-${index}`}
+                  name='title'
                   value={item.title}
                   onChange={(e) =>
                     setEducation(
@@ -46,6 +48,7 @@ function Education() {
                 <input
                   type='date'
                   id={`date-${index}`}
+                  name='date'
                   value={item.date}
                   onChange={(e) =>
                     setEducation(

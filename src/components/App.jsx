@@ -7,10 +7,12 @@ function App() {
   return (
     <>
       <div className='App'>
-        <Information />
-        <Education />
-        <Experience />
-        <Submit />
+        <form>
+          <Information />
+          <Education />
+          <Experience />
+          <Submit />
+        </form>
       </div>
     </>
   )
