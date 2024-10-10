@@ -1,18 +1,41 @@
+import PropTypes from 'prop-types'
 import { useState } from 'react'
 
-function Education() {
+function Education({ setCv }) {
   const [education, setEducation] = useState([
     { school: '', title: '', date: '' },
   ])
 
+  const updateEducationField = (index, property, value) => {
+    const updatedEducation = education.map((item, i) =>
+      i === index ? { ...item, [property]: value } : item
+    )
+
+    setEducation(updatedEducation)
+    setCv((prevCv) => ({
+      ...prevCv,
+      education: updatedEducation,
+    }))
+  }
+
   const handleAddEducation = (e) => {
     e.preventDefault()
-    setEducation([...education, { school: '', title: '', date: '' }])
+    const updatedEducation = [...education, { school: '', title: '', date: '' }]
+    setEducation(updatedEducation)
+    setCv((prevCv) => ({
+      ...prevCv,
+      education: updatedEducation,
+    }))
   }
 
   const handleDeleteEducation = (e, index) => {
     e.preventDefault()
-    setEducation(education.filter((_, i) => i !== index))
+    const updatedEducation = education.filter((_, i) => i !== index)
+    setEducation(updatedEducation)
+    setCv((prevCv) => ({
+      ...prevCv,
+      education: updatedEducation,
+    }))
   }
 
   return (
@@ -29,13 +52,9 @@ function Education() {
                   id={`school-${index}`}
                   name={`school-${index}`}
                   value={item.school}
-                  onChange={(e) =>
-                    setEducation(
-                      education.map((item, i) =>
-                        i === index ? { ...item, school: e.target.value } : item
-                      )
-                    )
-                  }
+                  onChange={(e) => {
+                    updateEducationField(index, 'school', e.target.value)
+                  }}
                 />
               </div>
               <div className='education-field'>
@@ -45,13 +64,9 @@ function Education() {
                   id={`title-${index}`}
                   name={`title-${index}`}
                   value={item.title}
-                  onChange={(e) =>
-                    setEducation(
-                      education.map((item, i) =>
-                        i === index ? { ...item, title: e.target.value } : item
-                      )
-                    )
-                  }
+                  onChange={(e) => {
+                    updateEducationField(index, 'title', e.target.value)
+                  }}
                 />
               </div>
               <div className='education-field'>
@@ -61,13 +76,9 @@ function Education() {
                   id={`date-${index}`}
                   name={`date-${index}`}
                   value={item.date}
-                  onChange={(e) =>
-                    setEducation(
-                      education.map((item, i) =>
-                        i === index ? { ...item, date: e.target.value } : item
-                      )
-                    )
-                  }
+                  onChange={(e) => {
+                    updateEducationField(index, 'date', e.target.value)
+                  }}
                 />
               </div>
               {index !== 0 && (
@@ -105,6 +116,10 @@ function Education() {
       </div>
     </div>
   )
+}
+
+Education.propTypes = {
+  setCv: PropTypes.func.isRequired, // Ensure setCv is passed and is a function
 }
 
 export default Education

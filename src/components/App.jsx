@@ -6,20 +6,25 @@ import Submit from './Submit.jsx'
 import Cv from './Cv.jsx'
 
 function App() {
-  const [cv, setCv] = useState(false)
+  const [cv, setCv] = useState({
+    cv: false,
+    information: [],
+    education: [],
+    experience: [],
+  })
 
   return (
     <>
       <div className='App'>
-        {!cv ? (
+        {!cv.cv ? (
           <form>
-            <Information />
-            <Education />
-            <Experience />
+            <Information setCv={setCv} />
+            <Education setCv={setCv} />
+            <Experience setCv={setCv} />
             <Submit setCv={setCv} />
           </form>
         ) : (
-          <Cv />
+          <Cv cv={cv} />
         )}
       </div>
     </>

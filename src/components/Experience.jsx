@@ -1,21 +1,44 @@
+import PropTypes from 'prop-types'
 import { useState } from 'react'
 
-function Experience() {
+function Experience({ setCv }) {
   const [experience, setExperience] = useState([
     { company: '', title: '', responsability: '', from: '', to: '' },
   ])
 
+  const updateExperienceField = (index, property, value) => {
+    const updatedExperience = experience.map((item, i) =>
+      i === index ? { ...item, [property]: value } : item
+    )
+
+    setExperience(updatedExperience)
+    setCv((prevCv) => ({
+      ...prevCv,
+      experience: updatedExperience,
+    }))
+  }
+
   const handleAddExperience = (e) => {
     e.preventDefault()
-    setExperience([
+    const updatedExperience = [
       ...experience,
       { company: '', title: '', responsability: '', from: '', to: '' },
-    ])
+    ]
+    setExperience(updatedExperience)
+    setCv((prevCv) => ({
+      ...prevCv,
+      experience: updatedExperience,
+    }))
   }
 
   const handleDeleteExperience = (e, index) => {
     e.preventDefault()
-    setExperience(experience.filter((_, i) => i !== index))
+    const updatedExperience = experience.filter((_, i) => i !== index)
+    setExperience(updatedExperience)
+    setCv((prevCv) => ({
+      ...prevCv,
+      experience: updatedExperience,
+    }))
   }
 
   return (
@@ -32,15 +55,9 @@ function Experience() {
                   id={`company-${index}`}
                   name={`company-${index}`}
                   value={item.company}
-                  onChange={(e) =>
-                    setExperience(
-                      experience.map((item, i) =>
-                        i === index
-                          ? { ...item, company: e.target.value }
-                          : item
-                      )
-                    )
-                  }
+                  onChange={(e) => {
+                    updateExperienceField(index, 'company', e.target.value)
+                  }}
                 />
               </div>
               <div className='experience-field'>
@@ -50,13 +67,9 @@ function Experience() {
                   id={`job-title-${index}`}
                   name={`job-title-${index}`}
                   value={item.title}
-                  onChange={(e) =>
-                    setExperience(
-                      experience.map((item, i) =>
-                        i === index ? { ...item, title: e.target.value } : item
-                      )
-                    )
-                  }
+                  onChange={(e) => {
+                    updateExperienceField(index, 'title', e.target.value)
+                  }}
                 />
               </div>
               <div className='experience-field'>
@@ -68,15 +81,13 @@ function Experience() {
                   id={`responsability-${index}`}
                   name={`responsability-${index}`}
                   value={item.responsability}
-                  onChange={(e) =>
-                    setExperience(
-                      experience.map((item, i) =>
-                        i === index
-                          ? { ...item, responsability: e.target.value }
-                          : item
-                      )
+                  onChange={(e) => {
+                    updateExperienceField(
+                      index,
+                      'responsability',
+                      e.target.value
                     )
-                  }
+                  }}
                 />
               </div>
               <div className='experience-field'>
@@ -86,13 +97,9 @@ function Experience() {
                   id={`from-${index}`}
                   name={`from-${index}`}
                   value={item.from}
-                  onChange={(e) =>
-                    setExperience(
-                      experience.map((item, i) =>
-                        i === index ? { ...item, from: e.target.value } : item
-                      )
-                    )
-                  }
+                  onChange={(e) => {
+                    updateExperienceField(index, 'from', e.target.value)
+                  }}
                 />
               </div>
               <div className='experience-field'>
@@ -102,13 +109,9 @@ function Experience() {
                   id={`to-${index}`}
                   name={`to-${index}`}
                   value={item.to}
-                  onChange={(e) =>
-                    setExperience(
-                      experience.map((item, i) =>
-                        i === index ? { ...item, to: e.target.value } : item
-                      )
-                    )
-                  }
+                  onChange={(e) => {
+                    updateExperienceField(index, 'to', e.target.value)
+                  }}
                 />
               </div>
               {index !== 0 && (
@@ -146,6 +149,10 @@ function Experience() {
       </div>
     </div>
   )
+}
+
+Experience.propTypes = {
+  setCv: PropTypes.func.isRequired, // Ensure setCv is passed and is a function
 }
 
 export default Experience

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 function Submit({ setCv }) {
   const handleSubmit = (e) => {
     e.preventDefault()
-    setCv(true)
+    setCv((prevCv) => ({ ...prevCv, cv: true }))
   }
 
   return (
