@@ -16,7 +16,7 @@ function Experience() {
                 <input
                   type='text'
                   id={`company-${index}`}
-                  name='company'
+                  name={`company-${index}`}
                   value={item.company}
                   onChange={(e) =>
                     setExperience(
@@ -34,7 +34,7 @@ function Experience() {
                 <input
                   type='text'
                   id={`job-title-${index}`}
-                  name='job-title'
+                  name={`job-title-${index}`}
                   value={item.title}
                   onChange={(e) =>
                     setExperience(
@@ -52,7 +52,7 @@ function Experience() {
                 <input
                   type='text'
                   id={`responsability-${index}`}
-                  name='responsability'
+                  name={`responsability-${index}`}
                   value={item.responsability}
                   onChange={(e) =>
                     setExperience(
@@ -70,7 +70,7 @@ function Experience() {
                 <input
                   type='date'
                   id={`from-${index}`}
-                  name='from'
+                  name={`from-${index}`}
                   value={item.from}
                   onChange={(e) =>
                     setExperience(
@@ -85,8 +85,8 @@ function Experience() {
                 <label htmlFor={`from-${index}`}>To</label>
                 <input
                   type='date'
-                  id={`from-${index}`}
-                  name='to'
+                  id={`to-${index}`}
+                  name={`to-${index}`}
                   value={item.to}
                   onChange={(e) =>
                     setExperience(

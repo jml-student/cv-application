@@ -4,6 +4,17 @@ function Education() {
   const [education, setEducation] = useState([
     { school: '', title: '', date: '' },
   ])
+
+  const handleAddEducation = (e) => {
+    e.preventDefault()
+    setEducation([...education, { school: '', title: '', date: '' }])
+  }
+
+  const handleDeleteEducation = (e, index) => {
+    e.preventDefault()
+    setEducation(education.filter((_, i) => i !== index))
+  }
+
   return (
     <div className='education'>
       <h2>Education</h2>
@@ -16,7 +27,7 @@ function Education() {
                 <input
                   type='text'
                   id={`school-${index}`}
-                  name='school'
+                  name={`school-${index}`}
                   value={item.school}
                   onChange={(e) =>
                     setEducation(
@@ -32,7 +43,7 @@ function Education() {
                 <input
                   type='text'
                   id={`title-${index}`}
-                  name='title'
+                  name={`title-${index}`}
                   value={item.title}
                   onChange={(e) =>
                     setEducation(
@@ -48,7 +59,7 @@ function Education() {
                 <input
                   type='date'
                   id={`date-${index}`}
-                  name='date'
+                  name={`date-${index}`}
                   value={item.date}
                   onChange={(e) =>
                     setEducation(
@@ -61,7 +72,10 @@ function Education() {
               </div>
               {index !== 0 && (
                 <div className='trash-container'>
-                  <button className='btn-education-trash'>
+                  <button
+                    className='btn-education-trash'
+                    onClick={(e) => handleDeleteEducation(e, index)}
+                  >
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       fill='currentColor'
@@ -77,12 +91,7 @@ function Education() {
         })}
       </div>
       <div className='education-buttons'>
-        <button
-          className='btn-education-add'
-          onClick={() =>
-            setEducation([...education, { school: '', title: '', date: '' }])
-          }
-        >
+        <button className='btn-education-add' onClick={handleAddEducation}>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             fill='currentColor'
