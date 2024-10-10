@@ -214,3 +214,103 @@ h2 {
     color: #f3f3f3;
   }
 }
+
+/* Cv */
+
+.cv-container {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  margin-top: 10px;
+  border: 4px double gray;
+}
+
+.cv-information {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.cv-name-container {
+  text-align: center;
+  border-bottom: 1px solid gray;
+  width: 100%;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.cv-education {
+  text-align: center;
+  border-bottom: 1px solid gray;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cv-experience {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cv-contact,
+.cv-education-items,
+.cv-experience-items {
+  width: 100%;
+}
+
+.cv-contact {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  border-bottom: 1px solid rgb(190, 190, 190);
+}
+.cv-education-item,
+.cv-experience-item {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  border-bottom: 1px solid rgb(190, 190, 190);
+}
+
+.cv-contact,
+.cv-education-item:last-child,
+.cv-experience-item:last-child {
+  border-bottom: 0;
+}
+
+.cv-title-contact,
+.cv-title-education,
+.cv-title-experience {
+  font-size: 1.5em;
+  color: gray;
+}
+
+.cv-phone,
+.cv-education-date,
+.cv-experience-from,
+.cv-experience-to {
+  font-size: 1.3em;
+  line-height: 1.9em;
+}
+
+@media (max-width: 600px) {
+  .cv-container {
+    padding: 20px;
+  }
+}

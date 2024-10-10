@@ -2,33 +2,52 @@ import PropTypes from 'prop-types'
 
 function Cv({ cv }) {
   return (
-    <div className='cv'>
-      <div className='cv-information' key={'cv-information'}>
-        <h1 key={'cv-name'}>{cv.information.name}</h1>
-        <h1 key={'cv-email'}>{cv.information.email}</h1>
-        <h1 key={'cv-phone'}>{cv.information.phone}</h1>
+    <div className='cv-container'>
+      <div className='cv-name-container'>
+        <h1 className='cv-name'>{cv.information.name}</h1>
       </div>
-
-      {cv.education.map((item, index) => {
-        return (
-          <div className='cv-education-item' key={`cv-education-${index}`}>
-            <h1 key={`cv-school-${index}`}>{item.school}</h1>
-            <h1 key={`cv-title-${index}`}>{item.title}</h1>
-            <h1 key={`cv-date-${index}`}>{item.date}</h1>
-          </div>
-        )
-      })}
-      {cv.experience.map((item, index) => {
-        return (
-          <div className='cv-experience-item' key={`cv-experience-${index}`}>
-            <h1 key={`cv-company-${index}`}>{item.company}</h1>
-            <h1 key={`cv-jobtitle-${index}`}>{item.title}</h1>
-            <h1 key={`cv-responsability-${index}`}>{item.responsability}</h1>
-            <h1 key={`cv-from-${index}`}>{item.from}</h1>
-            <h1 key={`cv-to-${index}`}>{item.to}</h1>
-          </div>
-        )
-      })}
+      <div className='cv-information'>
+        <h2 className='cv-title-contact'>Contact</h2>
+        <div className='cv-contact'>
+          <h2 className='cv-email'>{cv.information.email}</h2>
+          <h2 className='cv-phone'>{cv.information.phone}</h2>
+        </div>
+      </div>
+      <div className='cv-education'>
+        <h2 className='cv-title-education'>Education</h2>
+        <div className='cv-education-items'>
+          {cv.education.map((item, index) => {
+            return (
+              <div key={`cv-education-${index}`} className='cv-education-item'>
+                <h2 className='cv-education-title'>{item.title}</h2>
+                <h2 className='cv-education-school'>{item.school}</h2>
+                <h2 className='cv-education-date'>{item.date}</h2>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+      <div className='cv-experience'>
+        <h2 className='cv-title-experience'>Experience</h2>
+        <div className='cv-experience-items'>
+          {cv.experience.map((item, index) => {
+            return (
+              <div
+                key={`cv-experience-${index}`}
+                className='cv-experience-item'
+              >
+                <h2 className='cv-experience-company'>{item.company}</h2>
+                <h2 className='cv-experience-title'>{item.title}</h2>
+                <h2 className='cv-experience-responsability'>
+                  {item.responsability}
+                </h2>
+                <h2 className='cv-experience-from'>{item.from}</h2>
+                <h2 className='cv-experience-to'>{item.to}</h2>
+              </div>
+            )
+          })}
+        </div>
+      </div>
     </div>
   )
 }
