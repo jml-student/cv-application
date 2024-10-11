@@ -1,17 +1,10 @@
 import PropTypes from 'prop-types'
-import { useState } from 'react'
 
-function Education({ setCv }) {
-  const [education, setEducation] = useState([
-    { school: '', title: '', date: '' },
-  ])
-
+function Education({ cv, setCv }) {
   const updateEducationField = (index, property, value) => {
-    const updatedEducation = education.map((item, i) =>
+    const updatedEducation = cv.education.map((item, i) =>
       i === index ? { ...item, [property]: value } : item
     )
-
-    setEducation(updatedEducation)
     setCv((prevCv) => ({
       ...prevCv,
       education: updatedEducation,
@@ -20,8 +13,10 @@ function Education({ setCv }) {
 
   const handleAddEducation = (e) => {
     e.preventDefault()
-    const updatedEducation = [...education, { school: '', title: '', date: '' }]
-    setEducation(updatedEducation)
+    const updatedEducation = [
+      ...cv.education,
+      { school: '', title: '', date: '' },
+    ]
     setCv((prevCv) => ({
       ...prevCv,
       education: updatedEducation,
@@ -30,8 +25,7 @@ function Education({ setCv }) {
 
   const handleDeleteEducation = (e, index) => {
     e.preventDefault()
-    const updatedEducation = education.filter((_, i) => i !== index)
-    setEducation(updatedEducation)
+    const updatedEducation = cv.education.filter((_, i) => i !== index)
     setCv((prevCv) => ({
       ...prevCv,
       education: updatedEducation,
@@ -42,7 +36,7 @@ function Education({ setCv }) {
     <div className='education'>
       <h2>Education</h2>
       <div className='education-form'>
-        {education.map((item, index) => {
+        {cv.education.map((item, index) => {
           return (
             <div key={index} className='education-item'>
               <div className='education-field'>
@@ -119,6 +113,7 @@ function Education({ setCv }) {
 }
 
 Education.propTypes = {
+  cv: PropTypes.object.isRequired,
   setCv: PropTypes.func.isRequired, // Ensure setCv is passed and is a function
 }
 

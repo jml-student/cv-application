@@ -130,11 +130,8 @@ h2 {
   margin-bottom: 5px;
 }
 
-.btn-info-edit,
 .btn-education-add,
-.btn-education-edit,
-.btn-experience-add,
-.btn-experience-edit {
+.btn-cv-edit {
   border-radius: 10px;
   margin-right: 10px;
   width: 40px;
@@ -157,6 +154,10 @@ h2 {
     background-color: #0069d9;
     color: #f3f3f3;
   }
+}
+
+.btn-cv-edit {
+  margin-top: 10px;
 }
 
 .trash-container {

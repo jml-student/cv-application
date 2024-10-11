@@ -1,17 +1,9 @@
 import PropTypes from 'prop-types'
-import { useState } from 'react'
 
-function Information({ setCv }) {
-  const [information, setInformation] = useState({
-    name: '',
-    email: '',
-    phone: '',
-  })
-
+function Information({ cv, setCv }) {
   const updateInformationField = (property, value) => {
-    const updatedInformation = { ...information, [property]: value }
+    const updatedInformation = { ...cv.information, [property]: value }
 
-    setInformation(updatedInformation)
     setCv((prevCv) => ({
       ...prevCv,
       information: updatedInformation,
@@ -28,7 +20,7 @@ function Information({ setCv }) {
             type='text'
             id='name'
             name='name'
-            value={information.name}
+            value={cv.information.name}
             onChange={(e) => {
               updateInformationField('name', e.target.value)
             }}
@@ -40,7 +32,7 @@ function Information({ setCv }) {
             type='email'
             id='email'
             name='email'
-            value={information.email}
+            value={cv.information.email}
             onChange={(e) => {
               updateInformationField('email', e.target.value)
             }}
@@ -52,7 +44,7 @@ function Information({ setCv }) {
             type='tel'
             id='phone'
             name='phone'
-            value={information.phone}
+            value={cv.information.phone}
             onChange={(e) => {
               updateInformationField('phone', e.target.value)
             }}
@@ -64,6 +56,7 @@ function Information({ setCv }) {
 }
 
 Information.propTypes = {
+  cv: PropTypes.object.isRequired,
   setCv: PropTypes.func.isRequired, // Ensure setCv is passed and is a function
 }
 

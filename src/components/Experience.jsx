@@ -1,17 +1,11 @@
 import PropTypes from 'prop-types'
-import { useState } from 'react'
 
-function Experience({ setCv }) {
-  const [experience, setExperience] = useState([
-    { company: '', title: '', responsability: '', from: '', to: '' },
-  ])
-
+function Experience({ cv, setCv }) {
   const updateExperienceField = (index, property, value) => {
-    const updatedExperience = experience.map((item, i) =>
+    const updatedExperience = cv.experience.map((item, i) =>
       i === index ? { ...item, [property]: value } : item
     )
 
-    setExperience(updatedExperience)
     setCv((prevCv) => ({
       ...prevCv,
       experience: updatedExperience,
@@ -21,10 +15,9 @@ function Experience({ setCv }) {
   const handleAddExperience = (e) => {
     e.preventDefault()
     const updatedExperience = [
-      ...experience,
+      ...cv.experience,
       { company: '', title: '', responsability: '', from: '', to: '' },
     ]
-    setExperience(updatedExperience)
     setCv((prevCv) => ({
       ...prevCv,
       experience: updatedExperience,
@@ -33,8 +26,7 @@ function Experience({ setCv }) {
 
   const handleDeleteExperience = (e, index) => {
     e.preventDefault()
-    const updatedExperience = experience.filter((_, i) => i !== index)
-    setExperience(updatedExperience)
+    const updatedExperience = cv.experience.filter((_, i) => i !== index)
     setCv((prevCv) => ({
       ...prevCv,
       experience: updatedExperience,
@@ -45,7 +37,7 @@ function Experience({ setCv }) {
     <div className='experience'>
       <h2>Experience</h2>
       <div className='experience-form'>
-        {experience.map((item, index) => {
+        {cv.experience.map((item, index) => {
           return (
             <div key={index} className='experience-item'>
               <div className='experience-field'>
@@ -152,6 +144,7 @@ function Experience({ setCv }) {
 }
 
 Experience.propTypes = {
+  cv: PropTypes.object.isRequired,
   setCv: PropTypes.func.isRequired, // Ensure setCv is passed and is a function
 }
 
